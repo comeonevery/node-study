@@ -1,0 +1,74 @@
+github的SSH配置如下：
+一 、
+设置Git的user name和email：
+$ git config --global user.name "xuhaiyan"
+$ git config --global user.email "haiyan.xu.vip@gmail.com"
+
+二、生成SSH密钥过程：
+1.查看是否已经有了ssh密钥：cd ~/.ssh
+如果没有密钥则不会有此文件夹，有则备份删除
+2.生存密钥：
+$ ssh-keygen -t rsa -C “haiyan.xu.vip@gmail.com”
+按3个回车，密码为空。
+
+Your identification has been saved in /c/Users/Administrator/.ssh/id_rsa.
+Your public key has been saved in /c/Users/Administrator/.ssh/id_rsa.pub.
+The key fingerprint is:
+
+
+
+最后得到了两个文件：id_rsa和id_rsa.pub
+
+3.添加密钥到ssh：ssh-add 文件名
+需要之前输入密码。
+进入github，点击头像上的”Setting”，左侧有个SSH Keys，点击它，
+进入页面。点击右侧的”Add SSH key”，自己输入一个标题，然后把密钥赋值进去即可。
+4.在github上添加ssh密钥，这要添加的是“id_rsa.pub”里面的公钥。
+打开https://github.com/ ，登陆xuhaiyan825，然后添加ssh。
+
+四、仓库的初始化
+
+1.选择你代码所在的文件夹，鼠标右键，“Git Bash Here”，进入。然后输入命令：git init，创建本地git
+2.然后给仓库添加远程地址，输入命令： git remote add origin git@github.com:yourName/yourRepo.git yourName是你的用户名，
+yourRepo是你的仓库名。例如我的就是GooZy/Codes.git
+3.接着输入命令：git pull --rebase origin master 将github上仓库的文件和本地文件同步。 
+五、上传代码
+
+1.输入命令：git add acm.cpp可以选择需要上传的单文件，或者git add -A，将当前目录下的所有文件上传。
+2.第一步之后，git commit -m "XXX" 上传文件，双引号内为文件的一些描述，多文件会统一使用这个描述。
+3.最后，输入命令：git push -u origin master即可将文件将文件同步到github上了。之后想要上传、更新，重复第五步即可。 
+附： 
+第五步中，如果选择-A则把所有文件都上传，此时一些.exe、.o文件都会被上传，这时我们可以用git的gitignore方法。具体用法如下：
+
+1.首先右键仓库，Git Bash Here进入仓库。输入 touch .gitignore，就会生成一个名为”.gitignore”的文件。
+2.然后自己在文件中找到该文件，点击编辑，输入要屏蔽的文件类型即可。例如输入： 
+*.o 
+*.exe
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
