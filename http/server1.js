@@ -5,7 +5,7 @@
 */
 
 var http = require('http');
-
+var url = require('url');
 // var server = http.createServer(function(req,res){
 //     console.log(req.query);
 //     // console.log(arguments);
@@ -21,8 +21,10 @@ server.on('listening',function(){
 });
 // //监听成功
 server.on('request',function(req,res){
-
-    console.log(req.url);
+    var urlstr = url.parse(req.url);
+    console.log(urlstr);
+    console.log('req.query:',req.query);
+    console.log('req.url:',req.url);
     // console.log(req.headers);
     res.writeHead(200,'ok',{
         // 'content-type':'text/plain;charset=utf-8'

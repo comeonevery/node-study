@@ -47,6 +47,34 @@ yourRepo是你的仓库名。例如我的就是GooZy/Codes.git
 
 
 
+二  
+三、 开始使用github
+1.获取源码：
+$ git clone git@github.com:billyanyteen/github-services.git
+2.这样你的机器上就有一个repo了。
+3.git于svn所不同的是git是分布式的，没有服务器概念。所有的人的机器上都有一个repo，每次提交都是给自己机器的repo
+仓库初始化：
+git init
+生成快照并存入项目索引：
+git add
+文件,还有git rm,git mv等等…
+项目索引提交：
+git commit
+4.协作编程：
+将本地repo于远程的origin的repo合并，
+推送本地更新到远程：
+git push origin master
+更新远程更新到本地：
+git pull origin master
+补充：
+添加远端repo：
+$ git remote add upstream git://github.com/pjhyett/github-services.git
+重命名远端repo：
+$ git://github.com/pjhyett/github-services.git为“upstream”
+
+
+
+
 
 
 
