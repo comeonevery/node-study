@@ -22,19 +22,34 @@ server.on('listening',function(){
 // //监听成功
 server.on('request',function(req,res){
     var urlstr = url.parse(req.url);
-    console.log(urlstr);
-    console.log('req.query:',req.query);
-    console.log('req.url:',req.url);
-    // console.log(req.headers);
-    res.writeHead(200,'ok',{
-        // 'content-type':'text/plain;charset=utf-8'
-        'content-type':'text/html;charset=utf-8'
-    });
-    // res.write('hello;客户端有请求了！','utf-8');
-    res.write('hello！');
-    res.write('rtyrtyre客户端有请求了！');
-    res.end();
-    console.log('客户端有请求了！');
+    if(urlstr.pathname != '/favicon.ico'){
+        console.log(urlstr);
+        console.log('req.query:',urlstr.query);
+        // res.writeHead(200,'ok',{
+        //     // 'content-type':'text/plain;charset=utf-8'
+        //     'content-type':'text/html;charset=utf-8'
+        // });
+        switch (urlstr.pathname){
+            case '/':
+                //主页
+                res.writeHead('200',{'content-type':'text/html;charset=utf-8'});
+                res.end('<h1>这是首页</h1>');
+                break ;
+            case '/login':
+                res.writeHead('200',{'content-type':'text/html;charset=utf-8'});
+                res.end('<h1>这是登录页</h1>');
+                break ;
+            default :
+                res.writeHead('404',{'content-type':'text/html;charset=utf-8'});
+                res.end('<h1>这404错误页</h1>');
+        }
+        // res.write('hello！');
+        // res.write('rtyrtyre客户端有请求了！');
+        // res.end();
+        // console.log('客户端有请求了！');
+    }else{
+        res.end();
+    }
 });
 //监听出错
 server.on('error',function(err){
